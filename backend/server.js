@@ -25,7 +25,7 @@ app.use((req, res, next) => {
   });
 
 mongoose.connect(process.env.MONGO_URL).then(()=>console.log("db connected successfully")).catch(()=>console.log("err occured"));
-app.use(cors(corsOption));
+app.use(cors());
 app.use(express.json());
 
 app.use("/login",require("./routes/login"));
