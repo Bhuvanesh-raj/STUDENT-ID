@@ -10,10 +10,10 @@ const rolesList=require("./config/rolesList");
 const cookieparser=require("cookie-parser");
 app.use(cookieparser());
 
-// var corsOption={
-//     origin:"http://localhost:3000",
-//     optionsSuccessStatus:200
-// }
+var corsOption={
+    origin:"https://student-data-management-nine.vercel.app",
+    optionsSuccessStatus:200
+}
 
 
 app.use((req, res, next) => {
