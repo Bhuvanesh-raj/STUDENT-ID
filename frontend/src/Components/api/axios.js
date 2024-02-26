@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL="http://192.168.247.142:3500";
+const BASE_URL="https://student-data-management-ig7q.onrender.com";
 
 export const axiosPrivate=axios.create({
     baseURL:BASE_URL,
