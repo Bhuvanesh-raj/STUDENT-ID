@@ -11,13 +11,13 @@ const cookieparser=require("cookie-parser");
 app.use(cookieparser());
 
 var corsOption={
-    origin:"https://student-data-management-nine.vercel.app",
+    origin:"http://localhost:3000",
     optionsSuccessStatus:200
 }
 
 
 app.use((req, res, next) => {
-    // res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.header('Access-Control-Allow-Credentials', 'true');
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
@@ -25,9 +25,12 @@ app.use((req, res, next) => {
   });
 
 mongoose.connect(process.env.MONGO_URL).then(()=>console.log("db connected successfully")).catch(()=>console.log("err occured"));
-app.use(cors());
+app.use(cors(corsOption));
 app.use(express.json());
 
+// app.get("/",(req,res)=>{
+//     res.send("helloaaaaaaaaaaaaaa");
+// })
 app.use("/login",require("./routes/login"));
 app.use("/register",require("./routes/register"));
 app.use(verifyJWT);  

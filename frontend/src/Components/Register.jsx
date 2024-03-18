@@ -1,9 +1,11 @@
 import React, {useState } from "react";
-import axios from "./api/axios";
+import axios, { axiosPrivate } from "./api/axios";
+// import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const NewRegister=()=>{
+    // const axiosPrivate=useAxiosPrivate();
     const [fullname,setfullname]=useState("");
 
     const [dob,setdob]=useState("01/07/2003");
@@ -51,6 +53,7 @@ const NewRegister=()=>{
         e.preventDefault();
         // console.log(fullname+" "+dob+" "+registernum+" "+year+" "+collegename+" "+password+" "+confirmpassword);
         const responce=await axios.post("/register",{fullname,dob,registernumber,year,collegename,password});
+        console.log(responce);
         if(responce.data==="success!!"){
             alert("User registerd");
             navigate("/login");
