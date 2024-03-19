@@ -7,7 +7,7 @@ const verifyRoles=(...allowedRoles)=>{
         const userroles=req.role;
         const result=userroles.map((userrole)=>  AllowedRoles.includes(userrole)).find((val)=>val===true);
         if(!result) return res.sendStatus(401);
-        res.send("The use has permission to access this site");
+        res.send("The user has permission to access this site");
     }   
 }
 

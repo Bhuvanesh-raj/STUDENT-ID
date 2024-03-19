@@ -64,7 +64,7 @@ const Login=()=>{
             :
          <section >
                 {err?<p>{err}</p>:<></>}
-                 <p>Error block!!</p>
+                 {/* <p>Error block!!</p> */}
             <form onSubmit={submitevent}>
                 <label htmlFor="username">Username</label>
                 <input 

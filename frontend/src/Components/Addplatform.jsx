@@ -99,4 +99,5 @@ const Addplatform=()=>{
         </section>
     )
 }
+
 export default Addplatform;
