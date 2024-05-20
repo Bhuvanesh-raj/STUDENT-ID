@@ -9,8 +9,9 @@ const Profile=()=>{
     // const {usernam}
     useEffect(()=>{
         const responce=async ()=>{
-            const t=await axiosPrivate.get("/getusergpadata",{registernumber});
-            console.log(t);
+            const data=await axiosPrivate.get("/getusergpadata",{registernumber});
+            console.log(registernumber);
+            console.log(data);
         }
         responce();
     },[]);

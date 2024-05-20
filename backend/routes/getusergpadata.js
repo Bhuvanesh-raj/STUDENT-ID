@@ -5,9 +5,11 @@ const r=router.route("/");
 
 r.get(async (req,res)=>{
     const {registernumber}=req.body;
+    console.log(registernumber);
     const responce=await users.find({registernumber});
     console.log(responce[0]?.gpa[0]);
     res.json(responce[0]?.gpa[0]);
+    // res.send("hello there");
 });
 
 module.exports=router;
