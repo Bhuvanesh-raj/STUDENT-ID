@@ -1,7 +1,7 @@
 const express=require("express");
 const router=express.Router();
 const Addgpa=router.route("/");
-const Users=require("../models/mongodatabase");
+const {users:Users}=require("../models/mongodatabase");
 
 Addgpa.post(async (req,res)=>{
     const {tittle,gpa,username}=req.body;

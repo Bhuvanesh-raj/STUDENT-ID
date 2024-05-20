@@ -47,7 +47,6 @@ const Gpa=()=>{
             navigate("/login",{state:{from:location},replace:true});
         }
     }
-    
     const calculategpa=()=>{
         
         console.log(gpa);

@@ -1,4 +1,4 @@
-import { axiosPrivate } from "../Components/api/axios";
+    import { axiosPrivate } from "../Components/api/axios";
 import { useContext, useEffect } from "react";
 import AuthContext from "../Components/context/authcontext";
 import { useLocation, useNavigate } from "react-router-dom";

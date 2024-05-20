@@ -1,3 +1,4 @@
+const { json } = require("body-parser");
 const mongoose=require("mongoose");
 // const UserSchema=mongoose.Schema({
 //     username:String,
@@ -18,5 +19,13 @@ const UserSchema=mongoose.Schema({
     gpa:Array
 });
 
+const GpaSchema=mongoose.Schema({
+    year:Number,
+    template:JSON,
+    branch:String,
+    semester:Number
+});
+
 const users=new mongoose.model("users",UserSchema);
-module.exports=users;
+const gpa=new mongoose.model("gpa",GpaSchema);
+module.exports={users,gpa};

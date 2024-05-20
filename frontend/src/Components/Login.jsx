@@ -3,8 +3,6 @@ import axios from "./api/axios";
 import { useContext } from "react";
 import AuthContext from "./context/authcontext";
 import { useNavigate,useLocation} from "react-router-dom";
-// import { Await } from "react-router-dom";
-import { Link } from "@mui/material";
 // import userefreshtoken from "../hooks/userefreshtoken";
 const Login=()=>{
     const {setauth}=useContext(AuthContext);
@@ -12,7 +10,7 @@ const Login=()=>{
     const location=useLocation();
     const from=location?.state?.from || "/";
     const usernameinput=useRef();
-    const errfocus=useRef();
+    // const errfocus=useRef();
     const [username,setusername]=useState("");
     const [password,setpassword]=useState("");
 
@@ -29,33 +27,23 @@ const Login=()=>{
     },[]);
     const submitevent=async (e)=>{
         e.preventDefault();
+        console.log(username+" "+password);
         try{
             let responce=await axios.post("/login",{username,password});
-            // console.log(responce.status);
-            // if(responce.message){
-            //     alert(responce.message);
-            // }
-            // console.log(JSON.stringify(responce));
-            // console.log(responce.status);
             if(responce.status===401 || responce.status==403){
                 alert("Invalid username or password");
                 // responce.data=[];
                 throw new Error("not authenticated");
             }
             if(responce.data){
-                // console.log(responce.data); 
-                // console.log(responce )
                 const {accesstoken,roles,dob,registernumber,year,collegename}=responce.data;
                 setauth({username,accesstoken,roles,dob,registernumber,year,collegename,loggedin:true});
                 navigate(from);
             }
         }
         catch(e){
-            // if(e.status)
+            // console.log(e.status);
             alert("Username or password is incorrect");
-            // console.log("login fetch failed: "+e);
-            // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            
         }
     }    
     return (

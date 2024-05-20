@@ -1,6 +1,6 @@
 const express=require("express");
 const Router=express.Router();
-const Users=require("../models/mongodatabase");
+const {users:Users}=require("../models/mongodatabase");
 const md5=require("md5");
 const Login=Router.route("/");
 const jwt=require("jsonwebtoken");
@@ -29,7 +29,7 @@ Login.post(async (req,res)=>{
             }
             ,process.env.ACCESS_TOKEN,
             {
-                expiresIn:'60s'
+                expiresIn:'120s'
             }
             );
             // const refreshtoken=jwt.sign({

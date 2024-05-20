@@ -2,7 +2,7 @@ const express=require("express")
 const router=express.Router();
 const Register=router.route("/");
 const md5=require("md5");
-const Users=require("../models/mongodatabase");
+const {users:Users}=require("../models/mongodatabase");
 const rolesList=require("../config/rolesList");
 
 Register.post((req,res)=>{

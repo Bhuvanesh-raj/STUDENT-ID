@@ -1,13 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-// loading imports
-import Stack from '@mui/material/Stack';
-import CircularProgress from '@mui/material/CircularProgress';
-// loading imports
 
 import { Link } from "react-router-dom";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
@@ -27,14 +18,28 @@ const Addplatform=()=>{
         e.preventDefault();
         const userapi=api+platformusername;
         const res=await axios(userapi);
-        console.log("The responce is "+ res);
-        res.data.status=="success"?setuserdata(JSON.stringify(res.data)):setuserdata("No user exists");
-        if(res.data.status=="success"){
-            setstatus(true);
+        // res=JSON.parse(res);
+        console.log("The responce is "+ res.data);
+// changes
+        if(platform=="Leetcode"){
+            res.data.status=="success"?setuserdata(JSON.stringify(res.data)):setuserdata("No user exists");
+            if(res.data.status=="success"){
+                setstatus(true);
+            }
+            else{
+                setstatus(false);
+            }
         }
-        else{
-            setstatus(false);
+        else if(platform=="Codechef"){
+            res.data.success=="true"?setuserdata(JSON.stringify(res.data)):setuserdata("No user exists");
+            if(res.data.success=="true"){
+                setstatus(true);
+            }
+            else{
+                setstatus(false);
+            }
         }
+// changes
     }
     useEffect(()=>{
         setstatus(false);

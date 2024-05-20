@@ -1,7 +1,7 @@
 const express=require("express");
 const router=express.Router();
 const refreshtoken=router.route("/");
-const Users=require("../models/mongodatabase");
+const {users:Users}=require("../models/mongodatabase");
 const jwt=require("jsonwebtoken");
 
 refreshtoken.get(async (req,res)=>{

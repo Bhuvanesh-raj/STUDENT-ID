@@ -1,6 +1,6 @@
 const express=require("express");
 const Router=express.Router();
-const Users=require("../models/mongodatabase");
+const {users:Users}=require("../models/mongodatabase");
 const adminsearch=Router.route("/");
 
 adminsearch.post(async (req,res)=>{

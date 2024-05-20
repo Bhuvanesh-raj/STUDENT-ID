@@ -1,7 +1,7 @@
 const express=require("express");
 const router=express.Router();
 const Addplatform=router.route("/");
-const Users=require("../models/mongodatabase");
+const {users:Users}=require("../models/mongodatabase");
 const md5 = require("md5");
 
 
