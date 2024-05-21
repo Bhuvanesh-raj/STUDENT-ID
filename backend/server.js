@@ -14,6 +14,7 @@ app.use(cookieparser());
 //     origin:"http://localhost:3000",
 //     optionsSuccessStatus:200
 // }
+
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
@@ -22,7 +23,8 @@ app.use((req, res, next) => {
 });
 
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin:["http://localhost:3001","http://localhost:3000"],
+    // origin: ['celadon-cendol-c0aba0.netlify.app','localhost:3000'],
     credentials: true, // This allows the server to accept cookies from the client
 };
 
@@ -60,7 +62,6 @@ app.use("/addplatform",require("./routes/addplatform"));
 app.use("/savegpa",require("./routes/savegpa"));
 app.use("/getusergpadata",require("./routes/getusergpadata"));
 app.use("/finduser",require("./routes/finduser"));
-
 
 // app.get("/users",(req,res)=>{
 //   console.log(req);

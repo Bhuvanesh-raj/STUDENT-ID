@@ -1,5 +1,5 @@
 import React, {useState } from "react";
-import axios, { axiosPrivate } from "./api/axios";
+import axios from "./api/axios";
 // import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";

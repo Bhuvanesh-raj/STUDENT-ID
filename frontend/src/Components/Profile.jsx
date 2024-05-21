@@ -18,8 +18,10 @@ const Profile=()=>{
             try{
                 const responce=await axiosPrivate.post("/finduser",{registernumber});
                 console.log(responce.data); 
-                var {gpa}=responce.data;
-                gpa=gpa.filter((item)=>item.tittle!="dummy");
+                const {gpa}=responce.data;
+                // console.log(gpaa.gpa);
+                // gpa=gpa.filter((item)=>item.tittle!="dummy");
+                console.log([...gpa]);
                 setusergpa([...gpa]);
                 // setdata({...responce.data});
             }
@@ -27,8 +29,9 @@ const Profile=()=>{
                 console.error(error.responce?.data?.message || error.message);
             }
         }
+        // setInterval(async ()=>handlesubmit(),2000);
         handlesubmit();
-    
+        
     },[]);
 
     return (
@@ -52,9 +55,8 @@ const Profile=()=>{
             <Link to={"/addnewgpa"}>
                 addnewgpa
             </Link>
-            {usergpa.map((item)=><p key={item.id}>{item.tittle +" "+ item.gpa}</p>)}
-
-
+            {usergpa.map((item,index)=><p key={index}>{item.tittle +" "+ item.gpa}</p>)}
+            {/* <p>hello</p> */}
         </section>
     )
 }
