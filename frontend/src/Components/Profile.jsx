@@ -1,4 +1,4 @@
-import {useContext, useEffect } from "react";
+import {useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "./context/authcontext";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
@@ -6,14 +6,29 @@ const Profile=()=>{
     const {auth}=useContext(AuthContext);
     const {username,dob,registernumber,year,collegename}=auth;
     const axiosPrivate=useAxiosPrivate();
-    // const {usernam}
+    const [usergpa,setusergpa]=useState([]);
     useEffect(()=>{
-        const responce=async ()=>{
-            const data=await axiosPrivate.get("/getusergpadata",{registernumber});
-            console.log(registernumber);
-            console.log(data);
+        // const responce=async ()=>{
+        //     const data=await axiosPrivate.get("/getusergpadata",{registernumber:registernumber.toString()});
+        //     console.log(registernumber);
+        //     console.log(data);
+        // }
+        // responce();
+        const handlesubmit=async ()=>{
+            try{
+                const responce=await axiosPrivate.post("/finduser",{registernumber});
+                console.log(responce.data); 
+                var {gpa}=responce.data;
+                gpa=gpa.filter((item)=>item.tittle!="dummy");
+                setusergpa([...gpa]);
+                // setdata({...responce.data});
+            }
+            catch(error){
+                console.error(error.responce?.data?.message || error.message);
+            }
         }
-        responce();
+        handlesubmit();
+    
     },[]);
 
     return (
@@ -37,6 +52,7 @@ const Profile=()=>{
             <Link to={"/addnewgpa"}>
                 addnewgpa
             </Link>
+            {usergpa.map((item)=><p key={item.id}>{item.tittle +" "+ item.gpa}</p>)}
 
 
         </section>

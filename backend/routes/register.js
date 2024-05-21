@@ -17,7 +17,8 @@ Register.post((req,res)=>{
         collegename:collegename,
         roles:[rolesList.student],
         competitivecoding:{dummy:"dummy data"},
-        gpa:[{tittle:"Dummy"}]
+        gpa:[]
+        // gpa:[{tittle:"Dummy"}]
     })
     obj.save();
     res.send("success!!");

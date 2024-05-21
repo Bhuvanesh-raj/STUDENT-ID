@@ -96,20 +96,20 @@ root.render(
                         <Route exact path="login" element={<Login/>}/>
                         <Route exact path="register" element={<Register/>}/>
                         <Route element={<Requireauth allowedroles={[100]}/>}>
-                            <Route exact path="admin" element={<Adminpage/>}/>
-                        </Route>
-                        <Route element={<Requireauth allowedroles={[200,300]}/>}>
-                            <Route exact path="profile" element={<Profile/>}/>
-                            <Route exact path="gpa" element={<Gpa/>}/>
-                            <Route exact path="addplatform" element={<Addplatform/>}/>
-                            <Route exact path="newgpa/:index" element={<Templategpa/>}/>
-                            <Route exact path="addnewgpa" element={<Addnewgpa/>}/>
-                            <Route exact path="searchusers" element={<Searchusers/>}/>
-                            <Route exact path="addgpatemplate" element={<Addtemplate/>}/>
-                        </Route>
-                    </Route>
-                </Routes>
-            </BrowserRouter>
-        </AuthProvider>
-     </DataProvider>
+                        <Route exact path="searchusers" element={<Searchusers/>}/>
+                        <Route exact path="addgpatemplate" element={<Addtemplate/>}/>
+                        <Route exact path="admin" element={<Adminpage/>}/>
+                     </Route>
+                     <Route element={<Requireauth allowedroles={[200,300]}/>}>
+                        <Route exact path="profile" element={<Profile/>}/>
+                        <Route exact path="gpa" element={<Gpa/>}/>
+                        <Route exact path="addplatform" element={<Addplatform/>}/>
+                        <Route exact path="newgpa/:index" element={<Templategpa/>}/>
+                        <Route exact path="addnewgpa" element={<Addnewgpa/>}/>
+                     </Route>
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    </AuthProvider>
+ </DataProvider>
 );

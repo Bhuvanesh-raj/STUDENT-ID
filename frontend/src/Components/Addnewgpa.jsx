@@ -20,11 +20,11 @@ const Addnewgpa=()=>{
     }
     return( 
         <section>
-            {templatedata.map((item)=>(
+            {templatedata.length>0?templatedata.map((item)=>(
                 <section key={templatedata.indexOf(item)} onClick={()=>handleclick(templatedata.indexOf(item))}>
                     <Gpaboxcomponent data={item}/>
                 </section>
-            ))}
+            )):<p>There are no Template available</p>}
             </section>
         );
     

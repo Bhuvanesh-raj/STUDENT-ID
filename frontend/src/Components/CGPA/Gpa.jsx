@@ -39,7 +39,7 @@ const Gpa=()=>{
 
     const savegpaevent=async (e)=>{
         e.preventDefault();
-        const responce=await axiosPrivate.post("/addgpa",{tittle:inputtittle,gpa:gpa,username:auth.username});
+        const responce=await axiosPrivate.post("/addgpa",{tittle:inputtittle,gpa:gpa,username:auth.username,calculatedgpa:calculatedgpa});
         if(responce.status===200){
             navigate("/");
         }

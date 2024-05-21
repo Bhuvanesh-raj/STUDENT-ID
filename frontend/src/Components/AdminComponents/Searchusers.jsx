@@ -34,7 +34,7 @@ const Searchusers=()=>{
             <h3 >Enter the RegisterNumber: </h3>
             <input type="text" value={registernumber} onChange={(e)=>setregisternumber(e.target.value)}/>
             <button onClick={()=>handlesubmit()}>Search</button>
-            <p>{data.username?JSON.stringify(data):<></>}</p>
+            <p>{data.username?JSON.stringify(data):<>No users found</>}</p>
         </section>);
 }
 
