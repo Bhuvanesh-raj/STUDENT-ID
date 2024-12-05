@@ -50,6 +50,12 @@ mongoose.connect(process.env.MONGO_URL).then(()=>console.log("db connected succe
 app.use(cors(corsOptions));
 // app.use(cors());
 app.use(express.json());
+app.get("/*",(req,res,next)=>{
+    console.log("request came");
+    next()
+}
+);
+// console.log("request came");
 app.use("/login",require("./routes/login"));
 app.use("/register",require("./routes/register"));
 // app.use(verifyJWT);  

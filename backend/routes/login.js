@@ -10,7 +10,9 @@ Login.post(async (req,res)=>{
     const hashedpassword=md5(password);
     try{
         const responce=await Users.find({username,password:hashedpassword});
-        if(responce.length==0){
+        console.log(responce);
+        // setTimeout(()=>console.log(responce),10000);
+        if(responce.length!==0){
             // console.log(responce);
             const roles=Object.values(responce[0].roles);
             const dob=responce[0].dob;
@@ -53,13 +55,13 @@ Login.post(async (req,res)=>{
         }
         else{
             // res.json({message:"Unauthorised"});
-            res.send("no user found").sendStatus(403);
+            res.send("No user found").sendStatus(401);
         }
     }   
     catch(e){
-        console.log("error occured while fetching data+:");
-        // res.json({message:"Unauthorised"});
-        res.sendStatus(401);
+        console.log("TRY AGAIN");
+        res.json({message:"TRY AGAIN"});
+        res.sendStatus(500);
     }
 }).get((req,res)=>res.send("welcome to the get page!!"));
 

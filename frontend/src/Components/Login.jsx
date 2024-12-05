@@ -29,6 +29,7 @@ const Login = () => {
         console.log(username + " " + password);
         try {
             let responce = await axios.post("/login", { username, password });
+            console.log(responce);
             if (responce.status === 401 || responce.status == 403) {
                 alert("Invalid username or password");
                 // responce.data=[];
@@ -37,12 +38,13 @@ const Login = () => {
             if (responce.data) {
                 const { accesstoken, roles, dob, registernumber, year, collegename } = responce.data;
                 setauth({ username, accesstoken, roles, dob, registernumber, year, collegename, loggedin: true });
+                setsuccess(true);
                 navigate(from);
             }
         }
         catch (e) {
             // console.log(e.status);
-            alert("Username or password is incorrect");
+            alert("ERROR OCCURED");
         }
     }
     return (
