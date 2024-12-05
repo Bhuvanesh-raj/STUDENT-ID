@@ -17,7 +17,6 @@ const Login = () => {
     const [success, setsuccess] = useState(false);
     const [err, seterr] = useState("");
     // const navigate=useNavigate();
-
     useEffect(() => {
         seterr("");
     }, [username, password]);

@@ -10,7 +10,7 @@ Login.post(async (req,res)=>{
     const hashedpassword=md5(password);
     try{
         const responce=await Users.find({username,password:hashedpassword});
-        if(responce.length){
+        if(responce.length==0){
             // console.log(responce);
             const roles=Object.values(responce[0].roles);
             const dob=responce[0].dob;
@@ -49,12 +49,11 @@ Login.post(async (req,res)=>{
             // await Users.updateOne({username:username,password:md5(password)},{$set:{refreshtoken:refreshtoken}});
             // console.log(refreshtoken);
             // res.cookie('jwt',refreshtoken,{httpOnly:true,maxAge:24*60*60*1000});
-            res.json({accesstoken,dob,registernumber,year,collegename,roles});
-            res.status(200);
+            res.json({accesstoken,dob,registernumber,year,collegename,roles}).status(200);
         }
         else{
             // res.json({message:"Unauthorised"});
-            res.sendStatus(403);
+            res.send("no user found").sendStatus(403);
         }
     }   
     catch(e){

@@ -21,7 +21,7 @@ Register.post((req,res)=>{
         // gpa:[{tittle:"Dummy"}]
     })
     obj.save();
-    res.send("success!!");
+    res.send("success!!").sendStatus(200);
 })
 .get((req,res)=>{
     res.json({
